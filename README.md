@@ -5,6 +5,112 @@ AgriVoice is an AI-powered plant disease detection system with multilingual voic
 
 ---
 
+## How to Use This Project
+
+### Prerequisites
+Before you begin, ensure you have the following installed:
+- **Python 3.8+** (recommended: Python 3.9 or 3.10)
+- **MongoDB** (running locally on `localhost:27017`)
+- **Git** (for cloning the repository)
+- **Microphone** (for voice input features)
+
+### Installation Steps
+
+#### 1. Clone the Repository
+```bash
+git clone https://github.com/sahaniom/AgriVoice.git
+cd AgriVoice
+```
+
+#### 2. Create Virtual Environment (Recommended)
+```bash
+# Windows
+python -m venv venv
+venv\Scripts\activate
+
+# Linux/Mac
+python3 -m venv venv
+source venv/bin/activate
+```
+
+#### 3. Install Dependencies
+```bash
+pip install -r requirements.txt
+```
+
+#### 4. Set Up MongoDB
+- Install MongoDB Community Edition from [mongodb.com](https://www.mongodb.com/try/download/community)
+- Start MongoDB service:
+  ```bash
+  # Windows
+  net start MongoDB
+  
+  # Linux/Mac
+  sudo systemctl start mongod
+  ```
+- MongoDB will create the `agrivoice_auth` database automatically on first run
+
+#### 5. Configure Environment Variables
+Create a `.env` file in the root directory:
+```bash
+GEMINI_API_KEY=your_google_gemini_api_key_here
+```
+
+**To get your Gemini API Key:**
+1. Go to [Google AI Studio](https://makersuite.google.com/app/apikey)
+2. Create a new API key
+3. Copy and paste it in the `.env` file
+
+#### 6. Add the CNN Model
+- Place your trained model file `final_model.keras` in the `model/` directory
+- Create the model directory if it doesn't exist:
+  ```bash
+  mkdir model
+  ```
+- The model should be at: `model/final_model.keras`
+
+### Running the Application
+
+#### Start the Streamlit App
+```bash
+streamlit run app.py
+```
+
+The application will open in your default web browser at `http://localhost:8501`
+
+### Usage Guide
+
+#### 1. **User Registration & Login**
+- First-time users: Click on "Signup" tab
+- Enter your full name, 10-digit mobile number, and password
+- After registration, login with your mobile number and password
+
+#### 2. **Disease Detection**
+- Upload a clear image of a plant leaf or fruit (JPG, JPEG, or PNG)
+- The AI model will analyze and predict the disease
+- View the prediction result with the disease name
+
+#### 3. **Voice Chat with AI**
+- Select your preferred language from the sidebar (12 languages supported)
+- Click "Open Chatbot" to start the conversation
+- **Text Input**: Type your agricultural questions directly
+- **Voice Input**: 
+  - Click "🎤 Start Recording"
+  - Speak your question (max 7 seconds)
+  - Click "🟥 Stop Recording"
+  - The system will transcribe and respond in your selected language
+
+#### 4. **Image-Based Chatbot Analysis**
+- Option 1: Use the disease detection image by clicking "📤 Use Disease Detection Image"
+- Option 2: Upload a new image for chatbot discussion
+- Ask questions about the plant disease, treatment, or farming advice
+- The AI will provide personalized responses with audio output
+
+#### 5. **Logout**
+- Click the "🚪 Logout" button in the sidebar to end your session
+
+---
+
 ## 1. Dataset Description
 
 ### Dataset Overview
